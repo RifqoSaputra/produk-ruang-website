@@ -11,7 +11,7 @@
 <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-        // Otomatis redirect jika sudah login
+        // Skrip untuk menangani login dan redirect otomatis
         if (window.netlifyIdentity) {
             window.netlifyIdentity.on("init", user => {
                 if (!user) {
@@ -19,6 +19,9 @@
                         document.location.href = "/admin/";
                     });
                 }
+            });
+            window.netlifyIdentity.on("logout", () => {
+                document.location.href = "/";
             });
         }
     </script>
