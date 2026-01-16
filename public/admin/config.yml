@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateaway
   repo: RifqoSaputra/produk-ruang-website
   branch: main
   base_url: https://api.netlify.com
