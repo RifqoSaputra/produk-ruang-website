@@ -1,11 +1,12 @@
+// src/content/config.ts
 import { defineCollection, z } from 'astro:content';
 
 const projectsCollection = defineCollection({
-  type: 'content',
+  type: 'data', // GANTI INI dari 'content' ke 'data' karena kita pakai JSON
   schema: z.object({
     title: z.string(),
     category: z.string(),
-    image: z.string(), // Decap menyimpan path gambar sebagai string
+    image: z.string(),
   }),
 });
 
