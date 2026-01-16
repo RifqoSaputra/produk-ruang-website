@@ -2,6 +2,7 @@ backend:
   name: github
   repo: RifqoSaputra/produk-ruang-website
   branch: main
+  base_url: https://api.netlify.com # Penting untuk autentikasi eksternal
 
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
@@ -11,6 +12,7 @@ collections:
     label: "Proyek Interior"
     folder: "src/content/projects"
     create: true
+    format: "json" # Pakai JSON agar lebih mudah dibaca Astro
     fields:
       - { label: "Judul", name: "title", widget: "string" }
       - { label: "Kategori", name: "category", widget: "string" }
