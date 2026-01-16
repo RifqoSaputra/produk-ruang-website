@@ -1,0 +1,17 @@
+backend:
+  name: github
+  repo: RifqoSaputra/produk-ruang-website
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Proyek Interior"
+    folder: "src/content/projects"
+    create: true
+    fields:
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Kategori", name: "category", widget: "string" }
+      - { label: "Foto Proyek", name: "image", widget: "image" }
