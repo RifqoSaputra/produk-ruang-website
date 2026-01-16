@@ -4,16 +4,24 @@ backend:
   branch: main
   base_url: https://api.netlify.com
 
+local_backend: true
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+# Tampilan dashboard lebih rapi
+display_url: https://produk-ruang-website.vercel.app
+logo_url: https://your-logo-url.com/logo.png 
+
 collections:
   - name: "projects"
-    label: "Proyek Interior"
+    label: "Portofolio Utama" 
+    label_singular: "Tambah Karya Baru"
     folder: "src/content/projects"
     create: true
     format: "json"
+    slug: "{{title}}"
+    summary: "{{title}} - {{category}}" # Agar di list admin terlihat jelas
     fields:
-      - { label: "Judul", name: "title", widget: "string" }
-      - { label: "Kategori", name: "category", widget: "string" }
-      - { label: "Foto Proyek", name: "image", widget: "image" }
+      - { label: "Nama Proyek", name: "title", widget: "string", hint: "Tulis nama proyek yang gagah (Misal: Penthouse Sudirman)" }
+      - { label: "Kategori", name: "category", widget: "select", options: ["Living Room", "Kitchen", "Bedroom", "Office"], hint: "Pilih kategori ruangan" }
+      - { label: "Foto Utama", name: "image", widget: "image", hint: "Gunakan foto landscape kualitas tinggi" }

@@ -2,7 +2,7 @@
 import { defineCollection, z } from 'astro:content';
 
 const projectsCollection = defineCollection({
-  type: 'data', // GANTI INI dari 'content' ke 'data' karena kita pakai JSON
+  type: 'data', 
   schema: z.object({
     title: z.string(),
     category: z.string(),
@@ -11,5 +11,6 @@ const projectsCollection = defineCollection({
 });
 
 export const collections = {
-  'projects': projectsCollection,
+  // Pastikan nama ini SAMA PERSIS dengan 'name' di config.yml
+  'projects': projectsCollection, 
 };

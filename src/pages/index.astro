@@ -2,25 +2,31 @@
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
 
-// 1. Ambil data dari CMS (folder src/content/projects)
 const projectsFromCMS = await getCollection('projects');
 
-// 2. Mapping data agar formatnya sama dengan array lama Anda
-const cmsData = projectsFromCMS.map(project => ({
-  title: project.data.title,
-  category: project.data.category,
-  image: project.data.image
-}));
-
-// 3. Gabungkan: Pakai data CMS jika ada, jika tidak pakai data manual (default)
-const defaultProjects = [
-  { title: "Lounge Klasik Modern", category: "Living Room", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" },
-  { title: "Dapur Marmer Mewah", category: "Kitchen", image: "https://images.unsplash.com/photo-1556912177-f547c12dd0ee?auto=format&fit=crop&w=800&q=80" },
-  { title: "Suite Utama Premium", category: "Bedroom", image: "https://images.unsplash.com/photo-1616594111715-47431f4001ca?auto=format&fit=crop&w=800&q=80" },
-  { title: "Ruang Kerja Direktur", category: "Office", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80" },
-];
-
-const interiorProjects = cmsData.length > 0 ? cmsData : defaultProjects;
+const interiorProjects = projectsFromCMS.map(project => {
+  let imagePath = project.data.image;
+  
+  // LOGIKA BARU:
+  // 1. Jika gambar adalah link internet (http...), biarkan apa adanya.
+  // 2. Jika gambar dari CMS (dimulai dengan /public atau /images), 
+  //    pastikan path-nya bersih agar bisa dibaca browser.
+  if (imagePath && !imagePath.startsWith('http')) {
+    // Menghapus '/public' jika ada, karena di browser folder public adalah root '/'
+    imagePath = imagePath.replace('/public', '');
+    
+    // Memastikan path diawali dengan '/' agar tidak relatif terhadap halaman admin
+    if (!imagePath.startsWith('/')) {
+      imagePath = '/' + imagePath;
+    }
+  }
+  
+  return {
+    title: project.data.title,
+    category: project.data.category,
+    image: imagePath
+  };
+});
 ---
 
 <html lang="id" class="scroll-smooth">
