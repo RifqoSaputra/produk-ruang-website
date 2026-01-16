@@ -1,0 +1,175 @@
+---
+// Import CSS Utama agar Tailwind v4 Aktif
+import '../styles/global.css';
+
+const interiorProjects = [
+  { title: "Lounge Klasik Modern", category: "Living Room", image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" },
+  { title: "Dapur Marmer Mewah", category: "Kitchen", image: "https://images.unsplash.com/photo-1556912177-f547c12dd0ee?auto=format&fit=crop&w=800&q=80" },
+  { title: "Suite Utama Premium", category: "Bedroom", image: "https://images.unsplash.com/photo-1616594111715-47431f4001ca?auto=format&fit=crop&w=800&q=80" },
+  { title: "Ruang Kerja Direktur", category: "Office", image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80" },
+];
+---
+
+<html lang="id" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Produk Ruang | Arsitektur & Interior Premium</title>
+		
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		
+		<style>
+			:root {
+				--gold-primary: #c5a059;
+				--gold-dark: #a6823e;
+				--luxury-black: #1a1a1a;
+			}
+			body { font-family: 'Plus Jakarta Sans', sans-serif; }
+			h1, h2, h3 { font-family: 'Playfair Display', serif; }
+			
+			/* Custom Utilities */
+			.text-gold { color: var(--gold-primary); }
+			.bg-gold { background-color: var(--gold-primary); }
+			.border-gold { border-color: var(--gold-primary); }
+			
+			.glass-nav {
+				background: rgba(26, 26, 26, 0.95);
+				backdrop-filter: blur(10px);
+			}
+
+			/* Custom Animation for Scroll */
+			[data-aos] {
+				pointer-events: none;
+			}
+			.aos-animate {
+				pointer-events: auto;
+			}
+		</style>
+	</head>
+	<body class="bg-[#fcfcfc] text-zinc-900 overflow-x-hidden">
+
+		<nav class="fixed w-full z-50 px-6 py-5 flex justify-between items-center glass-nav border-b border-white/10">
+			<div class="text-white font-bold text-2xl tracking-tighter">
+				PRODUK <span class="text-gold">RUANG</span>
+			</div>
+			<div class="hidden md:flex gap-10 text-xs font-bold tracking-[0.2em] text-white/70 uppercase">
+				<a href="#home" class="hover:text-gold transition-colors">Beranda</a>
+				<a href="#portfolio" class="hover:text-gold transition-colors">Karya</a>
+				<a href="#contact" class="hover:text-gold transition-colors">Hubungi</a>
+			</div>
+			<a href="#contact" class="bg-gold hover:bg-white hover:text-black text-white px-7 py-3 text-[10px] font-bold tracking-widest transition-all duration-300 rounded-sm">
+				FREE CONSULTATION
+			</a>
+		</nav>
+
+		<section id="home" class="relative min-h-screen flex flex-col justify-center items-center px-6 bg-zinc-900 text-white overflow-hidden">
+			<div class="absolute inset-0 opacity-20 pointer-events-none">
+				<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]"></div>
+			</div>
+
+			<div class="relative text-center space-y-8 max-w-5xl z-10">
+				<div data-aos="fade-down" class="flex items-center justify-center gap-4">
+					<div class="h-[1px] w-12 bg-gold"></div>
+					<span class="text-[10px] tracking-[0.5em] uppercase text-gold font-bold">Luxury Interior Specialist</span>
+					<div class="h-[1px] w-12 bg-gold"></div>
+				</div>
+				
+				<h1 data-aos="fade-up" data-aos-duration="1200" class="text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight">
+					Estetika <span class="italic text-gold font-light">Ruang</span> <br/> Tanpa Batas.
+				</h1>
+				
+				<p data-aos="fade-up" data-aos-delay="300" class="text-white/60 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+					Kami merancang hunian kelas atas dengan sentuhan personal yang mencerminkan kemewahan dan kenyamanan sejati.
+				</p>
+				
+				<div data-aos="fade-up" data-aos-delay="500" class="pt-10">
+					<a href="#portfolio" class="group relative inline-block px-10 py-5 border border-gold text-gold font-bold tracking-widest text-xs uppercase overflow-hidden transition-all">
+						<span class="relative z-10 group-hover:text-white transition-colors duration-300">Jelajahi Portofolio</span>
+						<div class="absolute inset-0 bg-gold translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="portfolio" class="py-32 px-6 max-w-7xl mx-auto">
+			<div class="text-center mb-20 space-y-4">
+				<h2 data-aos="fade-up" class="text-4xl md:text-6xl font-bold tracking-tight uppercase">Karya <span class="text-gold italic font-light">Terpilih</span></h2>
+				<div data-aos="fade-up" data-aos-delay="100" class="h-1 w-20 bg-gold mx-auto"></div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+				{interiorProjects.map((project, index) => (
+					<div data-aos="fade-up" data-aos-delay={index * 150} class="group cursor-pointer">
+						<div class="relative aspect-[16/10] overflow-hidden bg-zinc-200 shadow-2xl rounded-sm">
+							<img src={project.image} alt={project.title} class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000" />
+							<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+								<span class="border border-white text-white px-6 py-2 text-[10px] font-bold tracking-widest uppercase">View Detail</span>
+							</div>
+						</div>
+						<div class="mt-8 space-y-2">
+							<p class="text-gold text-[10px] font-bold tracking-[0.3em] uppercase">{project.category}</p>
+							<h3 class="text-2xl font-bold hover:text-gold transition-colors">{project.title}</h3>
+						</div>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<section id="contact" class="py-32 bg-[#121212] text-white overflow-hidden">
+			<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+				<div class="space-y-8" data-aos="fade-right">
+					<h2 class="text-5xl md:text-7xl font-bold leading-tight tracking-tight uppercase">Mulai <br/> <span class="text-gold italic font-light">Konsultasi</span> Eksklusif.</h2>
+					<p class="text-white/50 text-lg font-light leading-relaxed max-w-md">
+						Tim arsitek kami siap mendengarkan visi Anda untuk menciptakan hunian impian yang tak lekang oleh waktu.
+					</p>
+				</div>
+
+				<div data-aos="fade-left" class="bg-white p-10 md:p-16 rounded-sm shadow-2xl">
+					<div class="space-y-8">
+						<h3 class="text-black text-3xl font-bold tracking-tight">Hubungi Kami</h3>
+						<div class="space-y-6">
+							<div class="relative">
+								<input type="text" id="userName" class="w-full py-4 bg-transparent border-b border-zinc-200 text-black outline-none focus:border-gold transition-colors placeholder:text-zinc-300" placeholder="NAMA LENGKAP">
+							</div>
+							<div class="relative">
+								<textarea id="userIdea" class="w-full py-4 bg-transparent border-b border-zinc-200 text-black outline-none focus:border-gold h-32 transition-colors placeholder:text-zinc-300" placeholder="CERITAKAN IDE INTERIOR ANDA"></textarea>
+							</div>
+							<button onclick="sendToWA()" class="w-full bg-black text-white py-6 font-bold tracking-[0.3em] hover:bg-gold transition-all duration-500 uppercase text-xs">
+								Kirim via WhatsApp
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<footer class="py-12 bg-black text-center border-t border-white/5">
+			<p class="text-[9px] text-white/30 font-bold uppercase tracking-[0.8em]">&copy; 2026 PRODUK RUANG LUXURY INTERIOR STUDIO</p>
+		</footer>
+
+		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<script is:inline>
+			AOS.init({
+				duration: 1000,
+				easing: 'ease-in-out',
+				once: true,
+			});
+
+			function sendToWA() {
+				const name = document.getElementById('userName').value;
+				const idea = document.getElementById('userIdea').value;
+				const phoneNumber = "628123456789"; 
+
+				if (!name || !idea) {
+					alert("Mohon isi nama dan ide anda.");
+					return;
+				}
+
+				const message = `Halo Produk Ruang, saya ${name}. Saya ingin konsultasi desain premium: ${idea}`;
+				window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+			}
+		</script>
+	</body>
+</html>
